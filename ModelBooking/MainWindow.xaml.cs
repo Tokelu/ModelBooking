@@ -13,6 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+using ModelBooking.Viewmodels;
+using ModelBooking.Utilities;
+using ModelBooking.Views;
+
+
 namespace ModelBooking
 {
     /// <summary>

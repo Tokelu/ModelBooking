@@ -1,12 +1,94 @@
-﻿<Window x:Class="ModelBooking.MainWindow"
+﻿
+    
+    <!--<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="DarkGoldenrod" />
+    </Style>
+
+    </ResourceDictionary>-->
+
+
+<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ModelBooking"
+
+        xmlns:Viewmodels="clr-namespace:ModelBooking.Viewmodels" x:Class="ModelBooking.MainWindow"
+
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"  MinHeight="460" MinWidth="800" Height="450" Width="800">
+
+
+    <Window.DataContext>
+        <Viewmodels:ModelAssignmentViewModel x:Name="ModelContext"></Viewmodels:ModelAssignmentViewModel>
+    </Window.DataContext>
+    
+    
+
+
     <Grid>
-        
+        <GridSplitter HorizontalAlignment="Left" Height="auto" MinHeight="399" Margin="226,10,0,0" VerticalAlignment="Top" Width="5"/>
+        <DataGrid ItemsSource="{Binding Assignments}" HorizontalAlignment="Right" Height="auto" MinHeight="399" Margin="0,10,10,10" VerticalAlignment="Top" Width="auto" MinWidth="546" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Kunde" Binding="{Binding Customer}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Header="Start Dato" Binding="{Binding StartDate}" ClipboardContentBinding="{x:Null}"/>
+
+                <DataGridTextColumn Header="Antal dage" Binding="{Binding AmountOfDays}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Header="Lokation" Binding="{Binding Location}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Header="Antal ønskede Modeller" Binding="{Binding AmountOfModels}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Header="Kommentar" Binding="{Binding Comment}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Header="Antal tilknyttede modeller" Binding="{Binding Models.Count, Mode=OneWay}" ClipboardContentBinding="{x:Null}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" Height="Auto" MinHeight="399" Margin="0,10,10,10" VerticalAlignment="Top" MinWidth="546" Width="auto"/>
+
+        <Grid HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="211">
+            <Image HorizontalAlignment="Left" Height="295" VerticalAlignment="Top" Width="211" Source="Images/RAW.jpg" />
+
+
+
+
+
+
+
+            <Button
+                Content="  Tilføj Model" 
+                HorizontalAlignment="Left" 
+                Margin="10,0,0,70" 
+                VerticalAlignment="Bottom" 
+                Width="140" 
+                HorizontalContentAlignment="Left" 
+                Command="{Binding AddModelCommand}">
+            </Button>
+
+            <Button 
+                Content="  Tilføj Opgave" 
+                HorizontalAlignment="Left" 
+                Margin="10,0,0,40" 
+                VerticalAlignment="Bottom" 
+                Width="140" 
+                HorizontalContentAlignment="Left"
+                Command="{Binding AddAssignmentCommand}" 
+                Style="{DynamicResource SpecialButtonStyle}">
+            </Button>
+
+            <Button 
+                Content="  Tildel Model til Opgave" 
+                HorizontalAlignment="Left" 
+                Margin="10,0,0,10" 
+                VerticalAlignment="Bottom" 
+                Width="140" 
+                HorizontalContentAlignment="Left"
+                Command="{Binding AddAssignModelCommand}">
+            </Button>
+            <!--<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" MinHeight="399" Height="auto" VerticalAlignment="Top" Width="211"/>-->
+
+
+        </Grid>
     </Grid>
 </Window>
+
+

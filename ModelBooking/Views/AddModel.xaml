@@ -1,0 +1,46 @@
+﻿<Window x:Class="ModelBooking.Views.AddModel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ModelBooking.Views"
+        xmlns:viewmodels="clr-namespace:ModelBooking.Viewmodels"
+        mc:Ignorable="d"
+        Title="Tilføj Model" Height="450" Width="500">
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" Height="349" Margin="10,10,0,0" VerticalAlignment="Top" Width="149">
+            <Label Content="Navn:"/>
+            <Label Content="Telefon:"/>
+            <Label Content="Adresse:"/>
+            <Label Content="Højde:"/>
+            <Label Content="Vægt:"/>
+            <Label Content="Hårfarve:"/>
+            <Label Content="Brugernavn:"/>
+            <Label Content="Adgangskode:"/>
+            <Label Content="Kommentar:"/>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="349" Margin="164,10,0,0" VerticalAlignment="Top" Width="311">
+            <TextBox   x:Name="tBName"       Height="23" Width="300" TextWrapping="Wrap" Text="" Margin="5,4,0,0" HorizontalAlignment="Left"/>
+            <TextBox   x:Name="tBPhone"      Height="23" Width="300" TextWrapping="Wrap" Text="" Margin="5,3,0,0" HorizontalAlignment="Left"/>
+            <TextBox   x:Name="tBAddress"    Height="23" Width="300" TextWrapping="Wrap" Text="" Margin="5,3,0,0" HorizontalAlignment="Left"/>
+            <TextBox   x:Name="tBHeight"     Height="23" Width="300" TextWrapping="Wrap" Text="" Margin="5,3,0,0" HorizontalAlignment="Left"/>
+            <TextBox   x:Name="tBWeight"     Height="23" Width="300" TextWrapping="Wrap" Text="" Margin="5,3,0,0" HorizontalAlignment="Left"/>
+            <TextBox   x:Name="tBHairColour" Height="23" Width="300" TextWrapping="Wrap" Text="" Margin="5,3,0,0" HorizontalAlignment="Left"/>
+            <TextBox   x:Name="tBUsername"   Height="23" Width="300" TextWrapping="Wrap" Text="" Margin="5,3,0,0" HorizontalAlignment="Left"/>
+            <PasswordBox   x:Name="tBPassword"   Height="23" Width="300" Margin="5,3,0,0" HorizontalAlignment="Left"/>
+            <TextBox   x:Name="tBlComment"   TextWrapping="Wrap" Margin="5,3,0,0" Height="133" Width="300" HorizontalAlignment="Left" AcceptsReturn="True"/>
+
+
+        </StackPanel>
+        <Button   
+            Content="Gem Model" 
+            HorizontalAlignment="Left" 
+            Margin="10,0,0,10" 
+            VerticalAlignment="Bottom" 
+            Width="75" Click="ButtonBase_OnClick" 
+            IsDefault="True" >
+        </Button>
+
+    </Grid>
+</Window>

@@ -1,0 +1,84 @@
+﻿@inject AssignmentData assignmentData
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="row">
+
+    <div class="col-md-4">
+        <h2>Kommende Opgaver</h2>
+        <ul>
+            @foreach (var assignment in assignmentData.UpcommingAssignments)
+            {
+                <li>
+                    <label class="labelWidth">Kunde: </label>
+                    <label>@assignment.Customer</label><br />
+                    <label class="labelWidth">Start Dato: </label>
+                    <label>@assignment.StartDate</label><br />
+                    <label class="labelWidth">Lokation: </label>
+                    <label>@assignment.Location</label><br />
+                    <label class="labelWidth">Antal Dage: </label>
+                    <label>@assignment.AmountOfDays</label><br />
+                </li>
+            }
+        </ul>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Tidligere Opgaver</h2>
+        <ul>
+            @foreach (var assignment in assignmentData.PreviousAssignments)
+            {
+                <li>
+                    <label class="labelWidth">Kunde: </label>
+                    <label>@assignment.Customer</label> <br />
+                    <label class="labelWidth">Start Dato: </label>
+                    <label>@assignment.StartDate</label><br />
+                    <label class="labelWidth">Lokation: </label>
+                    <label>@assignment.Location</label><br />
+                    <label class="labelWidth">Antal Dage: </label>
+                    <label>@assignment.AmountOfDays</label><br />
+                </li>
+            }
+        </ul>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Indberet Udgifter</h2>
+        <form method="post">
+            <label class="labelWidth"> Kunde:  </label>
+            <select name="assignmentId">
+                @foreach (var assignment in assignmentData.PreviousAssignments)
+                {
+                    <option value="@assignment.id">
+                        @assignment.Customer
+                    </option>
+                }
+            </select><br />
+
+            <label class="labelWidth"> Dato: </label>
+            <input name="date" type="date" value="@DateTime.Today.ToString("dd-MM-yyyy")" /><br />
+            <label class="labelWidth"> Beskriv udgiften: </label>
+            <input name="text" type="text" /><br />
+            <label class="labelWidth"> Beløb: </label>
+            <input name="amount" type="number" value="0" /><br />
+            <input type="button" value="Gem" onclick="AddExpense()" />
+        </form>
+    </div>
+</div>
+<script type="text/javascript" >
+    function AddExpense() {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Index")",
+            data: {
+                assignmentId: $("[name='assignmentId']").val(),
+                date: $("[name='date']").val(),
+                text: $("[name='text']").val(),
+                amount: $("[name='amount']").val()
+            }
+        });
+    }
+</script>
